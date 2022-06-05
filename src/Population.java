@@ -1,13 +1,14 @@
 public class Population {
 
     private final Individual[] individuals;
-    private final int individualGeneSize;
+    private final City[] genePool;
 
-    public Population(int size, int individualGeneSize){
+
+    public Population(int size, City[] cities){
         individuals = new Individual[size];
-        this.individualGeneSize = individualGeneSize;
+        this.genePool = cities;
         for(int i=0; i!=individuals.length; i++){
-            individuals[i] = new Individual(individualGeneSize);
+            individuals[i] = new Individual(genePool);
         }
     }
 
@@ -30,9 +31,6 @@ public class Population {
     }
      */
 
-    public int size(){
-        return individuals.length;
-    }
 
     public String toString(){
         for(int i=0; i!=individuals.length; i++){

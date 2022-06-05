@@ -1,6 +1,15 @@
 public class Main {
     public static void main(String[] args){
-        Population pop = new Population(10, 10);
+
+        City c1 = new City(2,4);
+        City c2 = new City(5,2);
+        City c3 = new City(8,3);
+        City c4 = new City(1,1);
+        City c5 = new City(10,10);
+
+        City[] cites = {c1,c2,c3,c4,c5};
+
+        Population pop = new Population(10, cites);
         System.out.println(pop);
     }
 }

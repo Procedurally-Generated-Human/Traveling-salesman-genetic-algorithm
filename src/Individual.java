@@ -1,31 +1,25 @@
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class Individual {
 
     private final int geneLength;
-    private final char[] genes;
+    private final City[] genes;
     private int fitness = 0;
 
-    public Individual(int geneLength){
-        this.geneLength = geneLength;
-        genes = new char[geneLength];
-        generateGenes();
+    public Individual(City[] genePool){
+        this.geneLength = genePool.length;
+        genes = new City[geneLength];
+        generateGenes(genePool);
     }
 
-    private void generateGenes(){
+    private void generateGenes(City[] genePool){
         Random r = new Random();
+        List<City> geneList = new ArrayList<City>(Arrays.asList(genePool));
         for(int i=0; i!=geneLength; i++) {
-            boolean isUnique = false;
-            char gene = 0;
-            while (!isUnique) {
-                gene = (char) (r.nextInt(26) + 'a');
-                if(!contains(genes, gene)){
-                    isUnique = true;
-                }
-            }
+            int randomGeneIndex = r.nextInt(geneList.size());
+            City gene = geneList.get(randomGeneIndex);
             setGene(gene, i);
+            geneList.remove(randomGeneIndex);
         }
     }
 
@@ -36,7 +30,7 @@ public class Individual {
         return false;
     }
 
-    public void setGene(char gene, int index){
+    public void setGene(City gene, int index){
         genes[index] = gene;
         fitness = 0;
     }
@@ -47,11 +41,11 @@ public class Individual {
     }
      */
 
-    public char[] getGenes() {
+    public City[] getGenes() {
         return genes;
     }
 
-    public char getGene(int index){
+    public City getGene(int index){
         return genes[index];
     }
 
