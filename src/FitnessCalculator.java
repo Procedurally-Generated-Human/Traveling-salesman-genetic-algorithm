@@ -2,22 +2,19 @@ import java.awt.geom.Point2D;
 
 public class FitnessCalculator {
 
-    static final int solution_size = 64;
-    static int[][] solution;
 
-    public static void setProblem(int[][] newSolution){
+    static City[] solution;
+
+    public static void setProblem(City[] newSolution){
         solution = newSolution;
     }
 
-    static int calculate(Individual individual){
-        int fitness = 0;
-        String alpabet = "abcdefghijklmnopqrstuvwxyz";
-
-
+    static double calculate(Individual individual){
+        double fitness = 0;
+        for(int i=0; i!=solution.length-1; i++){
+            fitness += individual.getGene(i).distanceTo(individual.getGene(i+1));
+        }
         return fitness;
     }
 
-    static int maxFitness(){
-        return solution.length;
-    }
 }
