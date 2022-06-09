@@ -4,7 +4,7 @@ public class Individual {
 
     private final int geneLength;
     private final City[] genes;
-    private int fitness = 0;
+    private double fitness = 0;
 
     public Individual(City[] genePool){
         this.geneLength = genePool.length;
@@ -23,23 +23,15 @@ public class Individual {
         }
     }
 
-    public static boolean contains(char[] array, char v) {
-        for (char e : array)
-            if (Objects.equals(v, e))
-                return true;
-        return false;
-    }
-
     public void setGene(City gene, int index){
         genes[index] = gene;
         fitness = 0;
     }
 
-    /*public int calculateFitness(){
+    public double calculateFitness(){
         this.fitness = FitnessCalculator.calculate(this);
-        return this.fitness;
+        return fitness;
     }
-     */
 
     public City[] getGenes() {
         return genes;
@@ -47,10 +39,6 @@ public class Individual {
 
     public City getGene(int index){
         return genes[index];
-    }
-
-    public int getFitness() {
-        return fitness;
     }
 
     public String toString(){

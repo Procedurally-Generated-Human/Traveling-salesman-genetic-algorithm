@@ -13,7 +13,8 @@ public class Main {
         Population pop = new Population(size, cites);
 
         for (int i = 0; i!=size ; i++) {
-            System.out.println(FitnessCalculator.calculate(pop.getIndividual(i)));
+            pop.getIndividual(i).calculateFitness();
         }
+        System.out.println(pop);
     }
 }

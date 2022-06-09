@@ -1,15 +1,20 @@
 public class Population {
 
     private final Individual[] individuals;
-    private final City[] genePool;
+    public final int size;
 
 
     public Population(int size, City[] cities){
+        this.size = size;
         individuals = new Individual[size];
-        this.genePool = cities;
         for(int i=0; i!=individuals.length; i++){
-            individuals[i] = new Individual(genePool);
+            individuals[i] = new Individual(cities);
         }
+    }
+
+    public Population(int size){
+        this.size = size;
+        individuals = new Individual[size];
     }
 
     public void saveIndividual(Individual indiv, int index){
@@ -20,7 +25,7 @@ public class Population {
         return individuals[index];
     }
 
-    /*public Individual getFittest(){
+    public Individual getFittest(){
         Individual fittest = individuals[0];
         for(int i=0; i!=individuals.length; i++){
             if(fittest.calculateFitness() < individuals[i].calculateFitness()){
@@ -29,7 +34,7 @@ public class Population {
         }
         return fittest;
     }
-     */
+
 
 
     public String toString(){
