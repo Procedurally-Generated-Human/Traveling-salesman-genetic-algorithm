@@ -3,10 +3,12 @@ import java.util.*;
 public class Individual {
 
     private final int geneLength;
-    private final City[] genes;
+    private City[] genes;
     private double fitness = 0;
+    private City[] genepool;
 
     public Individual(City[] genePool){
+        setGenepool(genePool);
         this.geneLength = genePool.length;
         genes = new City[geneLength];
         generateGenes(genePool);
@@ -28,6 +30,14 @@ public class Individual {
         fitness = 0;
     }
 
+    public void setGenes(City[] genes){
+        this.genes = genes;
+    }
+
+    public void setGenepool(City[] genepool) {
+        this.genepool = genepool;
+    }
+
     public double calculateFitness(){
         this.fitness = FitnessCalculator.calculate(this);
         return fitness;
@@ -36,9 +46,14 @@ public class Individual {
     public City[] getGenes() {
         return genes;
     }
-
     public City getGene(int index){
         return genes[index];
+    }
+    public int getGeneLength() {
+        return geneLength;
+    }
+    public City[] getGenepool() {
+        return genepool;
     }
 
     public String toString(){

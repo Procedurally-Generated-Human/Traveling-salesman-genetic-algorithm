@@ -28,7 +28,7 @@ public class Population {
     public Individual getFittest(){
         Individual fittest = individuals[0];
         for(int i=0; i!=individuals.length; i++){
-            if(fittest.calculateFitness() < individuals[i].calculateFitness()){
+            if(fittest.calculateFitness() > individuals[i].calculateFitness()){
                 fittest = individuals[i];
             }
         }
