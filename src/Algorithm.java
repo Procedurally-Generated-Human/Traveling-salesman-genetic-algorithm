@@ -2,7 +2,6 @@ import java.util.*;
 
 public class Algorithm {
 
-    private static final double uniformRate = 0.5;
     private static final int numberOfMutations = 1;
     private static final int tournamentSize = 10;
     private static final boolean elitism = true;
@@ -40,7 +39,6 @@ public class Algorithm {
         ArrayList<City> childGenes = new ArrayList<>(java.util.Arrays.asList(child.getGenes()));
         childGenes.clear();
         childGenes.addAll(parent1Genes.subList(startGene, endGene));
-        System.out.println(childGenes);
 
          int currentCityIndex = 0;
          int currentCityInTour1 = 0;
@@ -59,7 +57,7 @@ public class Algorithm {
          for (int i = 0; i != size ; i++) {
              child.setGene(childGenes.get(i) ,i);
          }
-
+         mutate(child);
          return child;
 
      }
