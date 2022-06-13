@@ -1,23 +1,22 @@
 import java.awt.geom.Point2D;
-import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class City {
+
+    static AtomicInteger nextId = new AtomicInteger();
     private int x;
     private int y;
-    private char id;
+    private int id;
 
     public City(int x, int y){
         setX(x);
         setY(y);
-        char c = generateId();
-        setId(c);
+        setId(generateId());
     }
 
-    private char generateId(){
-        Random r = new Random();
-        return (char)(r.nextInt(26) + 'a');
+    private int generateId(){
+        return nextId.incrementAndGet();
     }
-
     public double distanceTo(City b){
         return Point2D.distance(x, y, b.getX(), b.getY());
     }
@@ -28,7 +27,7 @@ public class City {
     public void setY(int y) {
         this.y = y;
     }
-    public void setId(char id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -38,11 +37,11 @@ public class City {
     public int getY() {
         return y;
     }
-    public char getId() {
+    public int getId() {
         return id;
     }
 
     public String toString(){
-        return ""+this.id;
+        return ""+this.id+"|";
     }
 }

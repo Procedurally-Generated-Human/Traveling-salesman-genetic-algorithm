@@ -9,5 +9,6 @@ This program uses a genetic algorithm to find approximate solutions to any given
 
 ### v2.0 checklist:  
 
-- Performance Graph
-- Cleaner Code
+- Performance graph
+- Import .TSP files
+- Cleaner code

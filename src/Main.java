@@ -15,12 +15,12 @@ public class Main {
         }
         FitnessCalculator.setProblem(cites);
 
-        int size = 200;
+        int size = 100;
         Population pop = new Population(size, cites);
 
         for (int i = 0; i != 100000 ; i++) {
-            System.out.println("Gen #" +i+ " "+ pop.getFittest());
-            pop = Algorithm.evolvePopulation(pop, cites);
+            System.out.println(pop.getFittest());
+            pop = Algorithm.evolvePopulation(pop);
         }
     }
 }

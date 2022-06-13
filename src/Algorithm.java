@@ -5,19 +5,19 @@ public class Algorithm {
     private static final int numberOfMutations = 1;
     private static final int tournamentSize = 10;
     private static final boolean elitism = true;
-    private static java.util.Arrays Arrays;
 
-    public static Population evolvePopulation(Population pop, City[] cities){
-        Population newPop = new Population(pop.size);
+    public static Population evolvePopulation(Population pop){
+        Population newPop = new Population(pop.getSize());
         Individual fittest = pop.getFittest();
-        for(int i=0; i!=pop.size; i++){
+        for(int i=0; i!=pop.getSize(); i++){
             Individual indiv1 = tournamentSelection(pop);
             Individual indiv2 = tournamentSelection(pop);
             Individual newIndiv = crossover(indiv1, indiv2);
-            newPop.saveIndividual(newIndiv, i);
+            mutate(newIndiv);
+            newPop.setIndividual(newIndiv, i);
         }
         if (elitism){
-            newPop.saveIndividual(fittest, 0);
+            newPop.setIndividual(fittest, 0);
         }
         return newPop;
     }
@@ -35,7 +35,7 @@ public class Algorithm {
         int startGene = Math.min(geneA, geneB);
         int endGene = Math.max(geneA, geneB);
 
-        Individual child = new Individual(ind1.getGenepool());
+        Individual child = new Individual(ind1.getGenes(), false);
         ArrayList<City> childGenes = new ArrayList<>(java.util.Arrays.asList(child.getGenes()));
         childGenes.clear();
         childGenes.addAll(parent1Genes.subList(startGene, endGene));
@@ -57,7 +57,6 @@ public class Algorithm {
          for (int i = 0; i != size ; i++) {
              child.setGene(childGenes.get(i) ,i);
          }
-         mutate(child);
          return child;
 
      }
@@ -76,8 +75,8 @@ public class Algorithm {
     private static Individual tournamentSelection(Population pop){
         Population tournament = new Population(tournamentSize);
         for(int i=0; i!=tournamentSize; i++){
-            int randomId = (int) (Math.random() * pop.size);
-            tournament.saveIndividual(pop.getIndividual(randomId), i);
+            int randomId = (int) (Math.random() * pop.getSize());
+            tournament.setIndividual(pop.getIndividual(randomId), i);
         }
         return tournament.getFittest();
     }

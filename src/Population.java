@@ -1,14 +1,14 @@
 public class Population {
 
     private final Individual[] individuals;
-    public final int size;
+    private final int size;
 
 
     public Population(int size, City[] cities){
         this.size = size;
         individuals = new Individual[size];
         for(int i=0; i!=individuals.length; i++){
-            individuals[i] = new Individual(cities);
+            individuals[i] = new Individual(cities, true);
         }
     }
 
@@ -17,14 +17,13 @@ public class Population {
         individuals = new Individual[size];
     }
 
-    public void saveIndividual(Individual indiv, int index){
+    public void setIndividual(Individual indiv, int index){
         individuals[index] = indiv;
     }
 
     public Individual getIndividual(int index){
         return individuals[index];
     }
-
     public Individual getFittest(){
         Individual fittest = individuals[0];
         for(int i=0; i!=individuals.length; i++){
@@ -34,14 +33,17 @@ public class Population {
         }
         return fittest;
     }
-
-
+    public int getSize() {
+        return size;
+    }
 
     public String toString(){
+        StringBuilder data = new StringBuilder();
         for(int i=0; i!=individuals.length; i++){
-            System.out.print(individuals[i] + "\n");
+            data.append(individuals[i]);
+            data.append("\n");
         }
-        return null;
+        return data.toString();
     }
 
 
