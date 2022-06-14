@@ -41,12 +41,10 @@ public class Algorithm {
         childGenes.addAll(parent1Genes.subList(startGene, endGene));
 
          int currentCityIndex = 0;
-         int currentCityInTour1 = 0;
          int currentCityInTour2 = 0;
          for (int i = 0; i < size; i++) {
              currentCityIndex = (endGene + i) % size;
 
-             currentCityInTour1 = parent1Genes.indexOf(parent1Genes.get(currentCityIndex));
              currentCityInTour2 = parent2Genes.indexOf(parent2Genes.get(currentCityIndex));
 
              if (!childGenes.contains(parent2Genes.get(currentCityInTour2))) {

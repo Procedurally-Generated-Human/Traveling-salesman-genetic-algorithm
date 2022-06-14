@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Main {
@@ -15,12 +17,14 @@ public class Main {
         }
         FitnessCalculator.setProblem(cites);
 
-        int size = 100;
+        int size = 200;
         Population pop = new Population(size, cites);
 
         for (int i = 0; i != 100000 ; i++) {
             System.out.println(pop.getFittest());
             pop = Algorithm.evolvePopulation(pop);
         }
+
+
     }
 }
