@@ -1,4 +1,4 @@
-# Gentic Algorithm Solution to the Traveling Salesman Problem
+# Genetic Algorithm Solution to the Traveling Salesman Problem
 
 This program uses a genetic algorithm to find approximate solutions to any given TSP.
 
